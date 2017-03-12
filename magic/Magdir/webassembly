@@ -1,0 +1,7 @@
+#------------------------------------------------------------------------------
+# $File$
+# webassembly:  file(1) magic for webassembly modules
+#
+# From: Pip Cet <pipcet@gmail.com>
+0     lelong     0x6d736100  WebAssembly module
+>4     lelong     x          \b, version %d
