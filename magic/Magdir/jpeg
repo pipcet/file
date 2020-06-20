@@ -1,6 +1,6 @@
 
 #------------------------------------------------------------------------------
-# $File: jpeg,v 1.29 2015/04/10 15:36:02 christos Exp $
+# $File: jpeg,v 1.32 2018/10/01 18:58:29 christos Exp $
 # JPEG images
 # SunOS 5.5.1 had
 #
@@ -51,31 +51,31 @@
 >>4	byte		x		\b, baseline, precision %d
 >>7	beshort		x		\b, %dx
 >>5	beshort		x		\b%d
->>9	byte		x		\b, frames %d
+>>9	byte		x		\b, components %d
 
->0	beshort		0xFFC1		
+>0	beshort		0xFFC1
 >>(2.S+2)	use			jpeg_segment
 >>4	byte		x		\b, extended sequential, precision %d
 >>7	beshort		x		\b, %dx
 >>5	beshort		x		\b%d
->>9	byte		x		\b, frames %d
+>>9	byte		x		\b, components %d
 
->0	beshort		0xFFC2		
+>0	beshort		0xFFC2
 >>(2.S+2)	use			jpeg_segment
 >>4	byte		x		\b, progressive, precision %d
 >>7	beshort		x		\b, %dx
 >>5	beshort		x		\b%d
->>9	byte		x		\b, frames %d
+>>9	byte		x		\b, components %d
 
 # Define Huffman Tables
 >0	beshort		0xFFC4
 >>(2.S+2)	use			jpeg_segment
 
->0	beshort		0xFFE1		
+>0	beshort		0xFFE1
 # Recursion handled by FFE0
 #>>(2.S+2)	use			jpeg_segment
 >>4	string		Exif		\b, Exif Standard: [
->>>10	indirect/r	x		
+>>>10	indirect/r	x
 >>>10	string		x		\b]
 
 # Application specific markers

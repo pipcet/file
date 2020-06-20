@@ -8,7 +8,7 @@
 # http://www.jisyo.com/viewer/faq/maki_tech.htm
 0	string/b		MAKI01 	Maki-chan v1.
 >6	ubyte|0x20	x		\b%c image
->8	ubelong		>0x40404040	\b, system ID: 
+>8	ubelong		>0x40404040	\b, system ID:
 >>8	byte		x		%c
 >>9	byte		x		\b%c
 >>10	byte		x		\b%c
@@ -21,7 +21,7 @@
 
 # Maki-chan v2 Graphic format
 # http://www.jisyo.com/viewer/faq/mag_tech.htm
-# http://mooncore.eu/bunny/txt/makichan.htm
+# https://mooncore.eu/bunny/txt/makichan.htm
 # http://metanest.jp/mag/mag.xhtml
 0	string/b		MAKI02\ \ 	Maki-chan v2 image,
 >8	byte		x		system ID: %c

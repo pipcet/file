@@ -48,6 +48,7 @@
 typedef int32_t cdf_secid_t;
 
 #define CDF_LOOP_LIMIT					10000
+#define CDF_ELEMENT_LIMIT				100000
 
 #define CDF_SECID_NULL					0
 #define CDF_SECID_FREE					-1
@@ -76,9 +77,9 @@ typedef struct {
 	cdf_secid_t	h_master_sat[436/4];
 } cdf_header_t;
 
-#define CDF_SEC_SIZE(h) ((size_t)(1 << (h)->h_sec_size_p2))
+#define CDF_SEC_SIZE(h) CAST(size_t, 1 << (h)->h_sec_size_p2)
 #define CDF_SEC_POS(h, secid) (CDF_SEC_SIZE(h) + (secid) * CDF_SEC_SIZE(h))
-#define CDF_SHORT_SEC_SIZE(h)	((size_t)(1 << (h)->h_short_sec_size_p2))
+#define CDF_SHORT_SEC_SIZE(h)	CAST(size_t, 1 << (h)->h_short_sec_size_p2)
 #define CDF_SHORT_SEC_POS(h, secid) ((secid) * CDF_SHORT_SEC_SIZE(h))
 
 typedef int32_t cdf_dirid_t;
@@ -127,9 +128,9 @@ typedef struct {
 
 typedef struct {
 	void *sst_tab;
-	size_t sst_len;
-	size_t sst_dirlen;
-	size_t sst_ss;
+	size_t sst_len;		/* Number of sectors */
+	size_t sst_dirlen;	/* Directory sector size */
+	size_t sst_ss;		/* Sector size */
 } cdf_stream_t;
 
 typedef struct {
@@ -272,7 +273,7 @@ typedef struct {
 typedef struct {
 	uint16_t ce_namlen;
 	uint32_t ce_num;
-	uint64_t ce_timestamp; 
+	uint64_t ce_timestamp;
 	uint16_t ce_name[256];
 } cdf_catalog_entry_t;
 
