@@ -32,7 +32,7 @@
 #include "file.h"
 
 #ifndef	lint
-FILE_RCSID("@(#)$File: apprentice.c,v 1.297 2020/05/09 18:57:15 christos Exp $")
+FILE_RCSID("@(#)$File: apprentice.c,v 1.299 2020/12/16 23:38:39 christos Exp $")
 #endif	/* lint */
 
 #include "magic.h"
@@ -1461,7 +1461,10 @@ apprentice_load(struct magic_set *ms, const char *fn, int action)
 		 */
 		set_last_default(ms, mset[j].me, mset[j].count);
 
-		/* coalesce per file arrays into a single one */
+		/* coalesce per file arrays into a single one, if needed */
+		if (mset[j].count == 0)
+			continue;
+		      
 		if (coalesce_entries(ms, mset[j].me, mset[j].count,
 		    &map->magic[j], &map->nmagic[j]) == -1) {
 			errs++;
@@ -2129,6 +2132,13 @@ parse(struct magic_set *ms, struct magic_entry *me, const char *line,
 	if (m->type == FILE_INVALID) {
 		if (ms->flags & MAGIC_CHECK)
 			file_magwarn(ms, "type `%s' invalid", l);
+		return -1;
+	}
+
+	if (m->type == FILE_NAME && cont_level != 0) {
+		if (ms->flags & MAGIC_CHECK)
+			file_magwarn(ms, "`name%s' entries can only be "
+			    "declared at top level", l);
 		return -1;
 	}
 

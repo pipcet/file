@@ -1,5 +1,5 @@
 #
-# $File: Makefile.am,v 1.157 2020/05/21 16:22:47 christos Exp $
+# $File: Makefile.am,v 1.164 2021/01/09 15:09:58 christos Exp $
 #
 MAGIC_FRAGMENT_BASE = Magdir
 MAGIC_DIR = $(top_srcdir)/magic
@@ -13,6 +13,7 @@ $(MAGIC_DIR)/Localstuff \
 $(MAGIC_FRAGMENT_DIR)/acorn \
 $(MAGIC_FRAGMENT_DIR)/adi \
 $(MAGIC_FRAGMENT_DIR)/adventure \
+$(MAGIC_FRAGMENT_DIR)/aes \
 $(MAGIC_FRAGMENT_DIR)/algol68 \
 $(MAGIC_FRAGMENT_DIR)/allegro \
 $(MAGIC_FRAGMENT_DIR)/alliant \
@@ -33,6 +34,7 @@ $(MAGIC_FRAGMENT_DIR)/assembler \
 $(MAGIC_FRAGMENT_DIR)/asterix \
 $(MAGIC_FRAGMENT_DIR)/att3b \
 $(MAGIC_FRAGMENT_DIR)/audio \
+$(MAGIC_FRAGMENT_DIR)/avm \
 $(MAGIC_FRAGMENT_DIR)/basis \
 $(MAGIC_FRAGMENT_DIR)/beetle \
 $(MAGIC_FRAGMENT_DIR)/ber \
@@ -69,6 +71,7 @@ $(MAGIC_FRAGMENT_DIR)/console \
 $(MAGIC_FRAGMENT_DIR)/convex \
 $(MAGIC_FRAGMENT_DIR)/coverage \
 $(MAGIC_FRAGMENT_DIR)/cracklib \
+$(MAGIC_FRAGMENT_DIR)/crypto \
 $(MAGIC_FRAGMENT_DIR)/ctags \
 $(MAGIC_FRAGMENT_DIR)/ctf \
 $(MAGIC_FRAGMENT_DIR)/cubemap \
@@ -154,6 +157,7 @@ $(MAGIC_FRAGMENT_DIR)/lif \
 $(MAGIC_FRAGMENT_DIR)/linux \
 $(MAGIC_FRAGMENT_DIR)/lisp \
 $(MAGIC_FRAGMENT_DIR)/llvm \
+$(MAGIC_FRAGMENT_DIR)/locoscript \
 $(MAGIC_FRAGMENT_DIR)/lua \
 $(MAGIC_FRAGMENT_DIR)/luks \
 $(MAGIC_FRAGMENT_DIR)/m4 \
@@ -221,11 +225,13 @@ $(MAGIC_FRAGMENT_DIR)/pbf \
 $(MAGIC_FRAGMENT_DIR)/pbm \
 $(MAGIC_FRAGMENT_DIR)/pc88 \
 $(MAGIC_FRAGMENT_DIR)/pc98 \
+$(MAGIC_FRAGMENT_DIR)/pcjr \
 $(MAGIC_FRAGMENT_DIR)/pdf \
 $(MAGIC_FRAGMENT_DIR)/pdp \
 $(MAGIC_FRAGMENT_DIR)/perl \
 $(MAGIC_FRAGMENT_DIR)/pgf \
 $(MAGIC_FRAGMENT_DIR)/pgp \
+$(MAGIC_FRAGMENT_DIR)/pgp-binary-keys \
 $(MAGIC_FRAGMENT_DIR)/pkgadd \
 $(MAGIC_FRAGMENT_DIR)/plan9 \
 $(MAGIC_FRAGMENT_DIR)/plus5 \
@@ -272,6 +278,7 @@ $(MAGIC_FRAGMENT_DIR)/spectrum \
 $(MAGIC_FRAGMENT_DIR)/sql \
 $(MAGIC_FRAGMENT_DIR)/ssh \
 $(MAGIC_FRAGMENT_DIR)/ssl \
+$(MAGIC_FRAGMENT_DIR)/statistics \
 $(MAGIC_FRAGMENT_DIR)/sun \
 $(MAGIC_FRAGMENT_DIR)/sylk \
 $(MAGIC_FRAGMENT_DIR)/symbos \
