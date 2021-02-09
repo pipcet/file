@@ -1,5 +1,5 @@
-.\" $File: file.man,v 1.142 2021/01/03 20:51:48 christos Exp $
-.Dd January 3, 2021
+.\" $File: file.man,v 1.144 2021/02/05 22:08:31 christos Exp $
+.Dd February 5, 2021
 .Dt FILE __CSECTION__
 .Os
 .Sh NAME
@@ -98,7 +98,7 @@ near the beginning of the file that tells the
 operating system
 that the file is a binary executable, and which of several types thereof.
 The concept of a
-.Dq magic
+.Dq magic number
 has been applied by extension to data files.
 Any file with some invariant identifier at a small fixed
 offset into the file can usually be described in this way.
@@ -343,6 +343,7 @@ Set various parameter limits.
 .It Li elf_notes Ta 256 Ta max ELF notes processed
 .It Li elf_phnum Ta 2048 Ta max ELF program sections processed
 .It Li elf_shnum Ta 32768 Ta max ELF sections processed
+.It Li encoding Ta 65536 Ta max number of bytes to scan for encoding evaluation
 .It Li indir Ta 50 Ta recursion limit for indirect magic
 .It Li name Ta 50 Ta use count limit for name/use magic
 .It Li regex Ta 8192 Ta length limit for regex searches

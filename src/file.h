@@ -27,7 +27,7 @@
  */
 /*
  * file.h - definitions for file(1) program
- * @(#)$File: file.h,v 1.223 2020/12/08 21:26:00 christos Exp $
+ * @(#)$File: file.h,v 1.225 2021/02/05 22:29:07 christos Exp $
  */
 
 #ifndef __file_h__
@@ -462,6 +462,7 @@ struct magic_set {
 	uint16_t elf_notes_max;
 	uint16_t regex_max;
 	size_t bytes_max;		/* number of bytes to read from file */
+	size_t encoding_max;		/* bytes to look for encoding */
 #ifndef FILE_BYTES_MAX
 # define FILE_BYTES_MAX (1024 * 1024)	/* how much of the file to look at */
 #endif
@@ -471,6 +472,7 @@ struct magic_set {
 #define	FILE_INDIR_MAX			50
 #define	FILE_NAME_MAX			50
 #define	FILE_REGEX_MAX			8192
+#define	FILE_ENCODING_MAX		(64 * 1024)
 };
 
 /* Type for Unicode characters */
@@ -550,6 +552,7 @@ protected int file_os2_apptype(struct magic_set *, const char *, const void *,
 #endif /* __EMX__ */
 protected int file_pipe_closexec(int *);
 protected int file_clear_closexec(int);
+protected char *file_strtrim(char *);
 
 protected void buffer_init(struct buffer *, int, const struct stat *,
     const void *, size_t);

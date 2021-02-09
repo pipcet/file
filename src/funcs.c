@@ -27,7 +27,7 @@
 #include "file.h"
 
 #ifndef	lint
-FILE_RCSID("@(#)$File: funcs.c,v 1.118 2020/12/08 21:26:00 christos Exp $")
+FILE_RCSID("@(#)$File: funcs.c,v 1.121 2021/02/05 22:29:07 christos Exp $")
 #endif	/* lint */
 
 #include "magic.h"
@@ -248,11 +248,31 @@ file_badread(struct magic_set *ms)
 }
 
 #ifndef COMPILE_ONLY
+#define FILE_SEPARATOR "\n- "
 
 protected int
 file_separator(struct magic_set *ms)
 {
-	return file_printf(ms, "\n- ");
+	return file_printf(ms, FILE_SEPARATOR);
+}
+
+static void
+trim_separator(struct magic_set *ms)
+{
+	size_t l;
+
+	if (ms->o.buf == NULL)
+		return;
+
+	l = strlen(ms->o.buf);
+	if (l < sizeof(FILE_SEPARATOR))
+		return;
+
+	l -= sizeof(FILE_SEPARATOR) - 1;
+	if (strcmp(ms->o.buf + l, FILE_SEPARATOR) != 0)
+		return;
+
+	ms->o.buf[l] = '\0';
 }
 
 static int
@@ -456,6 +476,7 @@ simple:
 				rv = -1;
 	}
  done:
+	trim_separator(ms);
 	if ((ms->flags & MAGIC_MIME_ENCODING) != 0) {
 		if (ms->flags & MAGIC_MIME_TYPE)
 			if (file_printf(ms, "; charset=") == -1)
@@ -805,4 +826,21 @@ file_pipe_closexec(int *fds)
 protected int
 file_clear_closexec(int fd) {
 	return fcntl(fd, F_SETFD, 0);
+}
+
+protected char *
+file_strtrim(char *str)
+{
+	char *last;
+
+	while (isspace(CAST(unsigned char, *str)))
+		str++;
+	last = str;
+	while (*last)
+		last++;
+	--last;
+	while (isspace(CAST(unsigned char, *last)))
+		last--;
+	*++last = '\0';
+	return str;
 }
