@@ -310,6 +310,7 @@
 >18	leshort		0x2530		Morpho MT (unofficial),
 >18	leshort		0x3330		FR30 (unofficial),
 >18	leshort		0x3426		OpenRISC (obsolete),
+>18	leshort		0x4157		WebAssembly (unofficial),
 >18	leshort		0x4688		Infineon C166 (unofficial),
 >18	leshort		0x5441		Cygnus FRV (unofficial),
 >18	leshort		0x5aa5		DLX (unofficial),
